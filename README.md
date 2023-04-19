@@ -17,16 +17,16 @@ This document is a summary of the full jx specification. Instead:
 
 # About this repository
 
-This is the home of the jx file format specification and roadmap.
+This is the home of the jx file format specification and road map.
 
-To use jx with your choosen coding language, see the various implementations:
+To use jx with your chosen coding language, see the various implementations:
 
 - [dart](https://github.com/jx-parser/jx-dart/) - this is the reference implementation
 - [haxe](https://github.com/jx-parser/jx-haxe/) - works, but out of date and a little buggy
 
-# Licence
+# License
 
-The jx format is provided under the MIT licence (free for any use, personal or commercial, without attribution, but also without warranty).
+The jx format is provided under the MIT license (free for any use, personal or commercial, without attribution, but also without warranty).
 
 # Features
 
@@ -42,9 +42,6 @@ The jx format is provided under the MIT licence (free for any use, personal or c
 - [Comments](#comments)
     - (Single-line comments)[#single-line-comments]
     - (Block comments)[#block-comments]
-- [Constants](#constants)
-    - [Built-in constants](#built-in-constants)
-    - [User-defined constants](#user-defined-constants)
 - [Variables](#variables)
     - [Declaring variables](#declaring-variables)
     - [Referencing variables](#referencing-variables)
@@ -164,7 +161,7 @@ There's a lot more jx can do with strings:
 
 ### boolean
 
-jx, like JSON, supports the boolean values `true` and `false`. Boolean values are not currounded by quotes. Case is ignored.
+jx, like JSON, supports the boolean values `true` and `false`. Boolean values are not quoted. Case is ignored, but lowercase is recommended.
 
 ```js
 [
@@ -207,7 +204,7 @@ A special constant that usually represents 'no value'. Case is ignored.
 
 ### Object
 
-Like JSON, the jx object is represented by curly braces `{...}` and must contain key-value pairs. However, keys in an object may be un-quoted (i.e. they do not need to be surrounded by quotes, like a string). Key-value pairs are seperated by a colon `:` (the assignment operator).
+Like JSON, the jx object is represented by curly braces `{...}` and must contain key-value pairs. However, keys in an object may be un-quoted (i.e. they do not need to be surrounded by quotes, like a string). Key-value pairs are separated by a colon `:` (the assignment operator).
 
 ```js
 {
@@ -225,9 +222,9 @@ Like JSON, the jx object is represented by curly braces `{...}` and must contain
 }
 ```
 
-> The official jx style guide recommends unquoted keys
+> Recommended style: use unquoted keys
 
-> The official jx style guide recommends semicolons to seperate key-value pairs in an object, including a trailing semicolon after the last element
+> Recommended style: use semicolons to separate key-value pairs in an object, including a trailing semicolon after the last element
 
 The jx format supports many advanced object operations, such as:
 - Combining objects
@@ -239,9 +236,9 @@ The jx format supports many advanced object operations, such as:
 
 Just like in JSON, an array is a list of values surrounded by square brackets. An array can be empty, or can contain any number of elements. Elements in an array can be a mixture of any data type.
 
-Elements in an array may be seperated by a comma `,` or a semicolon `;`. A trailing seperator (afetr the final element) is optional, but allowed.
+Elements in an array may be separated by a comma `,` or a semicolon `;`. A trailing separator (after the final element) is optional, but allowed.
 
-> The official jx style guide recommends comma seperators in an array, with a trailing comma after the last element
+> Recommended style: use comma separators in an array, with a trailing comma after the last element
 
 ```js
 [
@@ -261,7 +258,7 @@ Elements in an array may be seperated by a comma `,` or a semicolon `;`. A trail
 ]
 ```
 
-> Unlike JSON, jx array elements can be seperated by a semicolon `;` or a comma `,` (JSON supports comma only)
+> Unlike JSON, jx array elements can be separated by a semicolon `;` or a comma `,` (JSON supports comma only)
 
 The jx format supports many advanced array operations, such as:
 - Combining arrays
@@ -305,40 +302,7 @@ Block comments start with `/*` and end with `*/`. Anything in between is part of
 ]
 ```
 
-> The official jx style guide recommends single-line comments at the end of lines and block comments for larger sections of documentation
-
-## Constants
-
-A constant is a predefined value that you can refer to by name. JSON and jx both support the constants `true`, `false` and `null`.
-
-### Built-in constants
-
-The following constants are available to use within jx files.
-
-- **true** (*boolean*, true)
-- **false** (*boolean*, false)
-- **null** (*null*)
-- **pi** (*number*, approx 3.14159)
-- **pi_2** (*number*, pi divided by 2)
-- **inv_pi** (*number*, 1 divided by pi)
-
-### User-defined constants
-
-Custom constants can be provided before parsing a jx file. How this is done depends on the implementation. Constants are single words. They can contain (and start with) letters, digits, underscore, and various other characters (like `#`,`.`). They may not contain `-` or `:`.
-
-```js
-// The following are all valid constant names
-[
-  first,
-  second#,
-  _third,
-  four_th,
-  FIFTH5,
-  6th,
-]
-```
-
-> The official jx style guide recommends lower snake case, e.g. `lower_snake_case` 
+> Recommended style: use single-line comments at the end of lines and block comments for larger sections of documentation
 
 ## Variables
 
@@ -348,9 +312,9 @@ A variable represents a value that can be referenced further down in the jx file
 
 A variable is declared as a key-value pair. The key is the variable name, and the value is what the variable contains.
 
-A variable name starts with a dollar sign `$` followed by the name of the variable. They can contain (and start with) letters, digits, dash, underscore, and various other characters (like `#`,`.`). They may not contain `:`.
+A variable declaration starts with a dollar sign `$` followed by the name of the variable. They can contain (and start with) letters, digits, dash, underscore, and various other characters (like `#`,`.`). They may not contain `:`.
 
-The variable name is followed by the assignment seperator `:` (colon) and then the value of the variable. The value can be any supported jx data type, including number, boolean, array, object, equation - even another variable. 
+The variable name is followed by the assignment separator `:` (colon) and then the value of the variable. The value can be any supported jx data type, including number, boolean, array, object, equation - even another variable.
 
 ```js
 // The following are all valid variable names
@@ -361,12 +325,12 @@ The variable name is followed by the assignment seperator `:` (colon) and then t
   $four_th: { name: 'jx', supported: true },
   $FIFTH5: 5.0,
   $6th: true,
-  $seven#th: $first,
+  $seven#th: first,
   $eigthVar: null,
 }
 ```
 
-> The official jx style guide recommends lower pascal case, e.g. `$myVariable` or `$bigCameraBag`
+> Recommended style:use lower pascal case for variable names, e.g. `$myVariable` or `$bigCameraBag`
 
 ### Referencing variables
 
@@ -375,7 +339,7 @@ A variable can be referenced by using it anywhere that a value would be used. He
 ```js
 {
     $extn: '.jx',
-    description: 'The jx file extension is ' + $extn,
+    description: 'The jx file extension is ' + extn,
 }
 ```
 
@@ -384,7 +348,7 @@ A variable can be referenced by using it anywhere that a value would be used. He
     data: {
         $foo: 30,
     },
-    bar: $foo 
+    bar: foo 
 }
 ```
 
@@ -400,28 +364,28 @@ The following example creates a theme file based on a couple of variables that a
 //   $baseFont = Arial
 //   $baseFontSize = 16
 {
-    $headingFontSize: $baseFontSize * 1.4;
-    bgColor: darken($baseColor, 0.8);
-    borderColor: lighten($baseColor, 0.5);
-    panelColor: $baseColor;
+    $headingFontSize: baseFontSize * 1.4;
+    bgColor: darken(baseColor, 0.8);
+    borderColor: lighten(baseColor, 0.5);
+    panelColor: baseColor;
     body: {
-        fontFamily: $baseFont;
+        fontFamily: baseFont;
         weight: 'normal';
-        size: $baseFontSize;
-        color: lighten($baseColor, 0.5);
+        size: baseFontSize;
+        color: lighten(baseColor, 0.5);
     };
     heading: {
-        fontFamily: $baseFont;
+        fontFamily: baseFont;
         weight: 'bold';
-        size: $headingFontSize;
-        color: lighten($baseColor, 0.5);
+        size: headingFontSize;
+        color: lighten(baseColor, 0.5);
     };
 }
 ```
 
 ### Default values for variables
 
-jx allows variables to have default values. The default value is used if no user-defined variable is passed in. Preceed the variable declaration with a question mark `?` to specify a default value. For example `?$name: 'jx'`.
+jx allows variables to have default values. The default value is used if no user-defined variable is passed in. Precede the variable declaration with a question mark `?` to specify a default value. For example `?$name: 'jx'`.
 
 The following is a repeat of the previous example using default values. Note that `$headingFontSize` is not declared with a default value. If the user passed in a different value for `$headingFontSize` it will always be overwritten.
 
@@ -438,21 +402,21 @@ The following is a repeat of the previous example using default values. Note tha
     ?$baseColor = #B04F07;
     ?$baseFont = Calibri;
     ?$baseFontSize = 12;
-    $headingFontSize: $baseFontSize * 1.4;
-    bgColor: darken($baseColor, 0.8);
-    borderColor: lighten($baseColor, 0.5);
-    panelColor: $baseColor;
+    $headingFontSize: baseFontSize * 1.4;
+    bgColor: darken(baseColor, 0.8);
+    borderColor: lighten(baseColor, 0.5);
+    panelColor: baseColor;
     body: {
-        fontFamily: $baseFont;
+        fontFamily: baseFont;
         weight: 'normal';
-        size: $baseFontSize;
-        color: lighten($baseColor, 0.5);
+        size: baseFontSize;
+        color: lighten(baseColor, 0.5);
     };
     heading: {
-        fontFamily: $baseFont;
+        fontFamily: baseFont;
         weight: 'bold';
-        size: $baseFontSize * 1.4;
-        color: lighten($baseColor, 0.5);
+        size: baseFontSize * 1.4;
+        color: lighten(baseColor, 0.5);
     };
 }
 ```
@@ -482,8 +446,8 @@ The following mathmatical functions are available within a jx file:
 - **abs(number)** return the absolute value of a argument
 - **clamp(number, number, number)** clamp the first argument between the second (min) and third (max) arguments
 - **lerp(number, number, number)** linearly interpolate a position between the first and second arguments
-- **degToRad(number)** convert the argument in radians to degrees
-- **radToDeg(number)** convert the argument in degrees to radians
+- **rad(number)** convert the argument in radians to degrees
+- **deg(number)** convert the argument in degrees to radians
 - **random(number)** return a random number (decimal) between 0 and the supplied argument
 
 > **(Read the full documentation for math functions)[docs/functions.md#math]
@@ -525,9 +489,9 @@ var parser = JxParser()
 var result = parser.parse('{ myArray: wrapInArray("a", 100, true); }');
 ```
 
-> The official jx style guide recommends lower pascal case for function names, e.g. `myFunctionName(...)`
+> Recommended style: use lower pascal case for function names, e.g. `myFunctionName(...)`
 
-> consider using a (constant)[#constants] instead of a function if it takes no inputs and always returns the same fixed value
+> consider using a (variable)[#variables] instead of a function if it takes no inputs and always returns the same fixed value
 
 ## Expressions
 
@@ -537,9 +501,9 @@ Some examples of expression are:
 
 ```js
 [
-    17 * (sin($angle) + pi); // Mathematical expression
+    17 * (sin(angle) + pi); // Mathematical expression
     ['a', 'b'] + wrapInArray(getPeopleInTeam('team1')); // Array manipulation
-    'party at ' + $place; // String manipulation
+    'party at ' + place; // String manipulation
 ]
 ```
 
