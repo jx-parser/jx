@@ -1,0 +1,64 @@
+/**
+ * @jx-version: 1.0
+ * @author: Projectitis
+ *
+ * This is an example jx file
+ *
+ * A jx file may contain comments, including block comments like this one.
+ * Comments are ignored when the file is parsed.
+ **/
+{
+    // This is a variable that cannot be overwritten by the user. Variables
+    // can be set once (usually at the top of the file) and then used in
+    // many places.
+    $color: #ff9900;
+
+    // This is a variable with a default value. If the user does not supply
+    // a value, then the default is used. The value is a string.
+    ?$name: 'Projectitis';
+
+    // This is number value (an integer number) stored in a variable.
+    ?$copyrightYear: 2023;
+
+    // This is an expression that creates a string value from a number of other
+    // values and variables.
+    copyrightNotice: 'Copyright (c) ' + copyrightYear + ' ' + name;
+
+    // This is an array of values. It pre-calculates values for sine.
+    // Values may be separated by a comma or a semicolon. Unlike JSON there may
+    also be a trailing separator after the last element.
+    [
+        sin(pi / 5 * 0), // sin is an example of a built-in function
+        sin(pi / 5 * 1), // pi is an example of a built-in constant
+        sin(pi / 5 * 2), // Notice that mathematical expressions are supported
+        sin(pi / 5 * 3),
+        sin(pi / 5 * 4),
+        sin(pi / 5 * 5),
+    ];
+
+    // This is a nested object. Just for demonstration purposes the key has been
+    // surrounded by quotes. Both double and single quotes are supported.
+    'theme': {
+
+        // Using a variable from earlier. Variables must be declared earlier in
+        // the file. A declared variable is always 'global' in scope.
+        baseColor: color;
+
+        // There are built-in functions to work with colors. This defines a border
+        // color that is 80% darker than the base theme color.
+        borderColor: darken(color, 0.8);
+
+        // This defines a background color that is 50% lighter than the base color.
+        // Notice that it is defined as a variable.
+        $bgColor: lighten(color, 0.5);
+
+        // The background color is now stored as a key-value pair and available in
+        // the result to the user.
+        bgColor: bgColor;
+
+        // The background color can now also be used to calculate the warning color.
+        // This tints the color 25% towards red. Note that colors can be created from
+        // individual R, G, B components using the rgb function to combine them.
+        warningColor: tint(bgColor, rgb(255, 0, 0), 0.5);
+    };
+}
