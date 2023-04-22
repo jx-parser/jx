@@ -1,5 +1,7 @@
 # jx specification v1.0
 
+> Documentation is incomplete. Work in progress
+
 jx is a super-set of JSON that supports core JSON but adds many more powerful features.
 
 - [File structure](structure.md)
