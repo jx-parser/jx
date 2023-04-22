@@ -52,8 +52,8 @@ The jx format is provided under the MIT license (free for any use, personal or c
     - [User-defined functions](#user-defined-functions)
 - [Expressions](#expressions)
     - [Operators](#operators)
-- [Official style guide](styleguide.md)
-- [Road map](roadmap.md)
+- [Official style guide](docs/styleguide.md)
+- [Road map](docs/roadmap.md)
 
 ## File structure
 
