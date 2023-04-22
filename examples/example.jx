@@ -26,8 +26,8 @@
 
     // This is an array of values. It pre-calculates values for sine.
     // Values may be separated by a comma or a semicolon. Unlike JSON there may
-    also be a trailing separator after the last element.
-    [
+    // also be a trailing separator after the last element.
+    lut: [
         sin(pi / 5 * 0), // sin is an example of a built-in function
         sin(pi / 5 * 1), // pi is an example of a built-in variable
         sin(pi / 5 * 2), // Notice that mathematical expressions are supported
